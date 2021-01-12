@@ -38,6 +38,7 @@
                     $_SESSION['Email']=$row['email'];
                     #$_SESSION['UserName']=$row['UserName'];
                     $_SESSION['Password']=$row['password'];
+                    $_SESSION['Tipo']=$row['Tipo'];
 
                     header("location: ../main.php");
                     exit();

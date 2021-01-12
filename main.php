@@ -46,7 +46,7 @@ https://templatemo.com/tm-529-ramayana
             <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a href="index.html">Ramayana</a>
+                <a href="main.php">UDNApp</a>
               </div>
                <div class="logout"> 
                 <a href="php/logout.php">Cerrar sesión</a>
@@ -63,16 +63,12 @@ https://templatemo.com/tm-529-ramayana
                         <div class="col-md-12">
                           <div class="banner-caption">
                             <?php
-                            if (isset($_SESSION['Email']))
-                            { 
-                                echo "<h4>Hola Mariana</h4>";
-                            }else{
-                               echo " <h4>Hello, this is your <em>Ramayana</em> Theme.</h4>
-                            <span>AWESOME HTML5 &amp; CSS3 TEMPLATE</span>
-                            <p>Do you know that <strong>Ramayana</strong> is a free to use Bootstrap 4 CSS template by <strong>templatemo</strong>? You can edit and add more pages as you wanted for your personal or corporate websites.</p>
-                            <div class=\"primary-button\">
-                              <a href=\"#\">Read More</a>
-                            </div>";
+                             if ($_SESSION['Tipo'] == 1) {
+                                echo "<h4>Hola Administrador(a)</h4>";
+                            } else if ($_SESSION['Tipo'] == 2) {
+                                echo "<h4>Hola Profesor(a)</h4>";
+                            } else if ($_SESSION['Tipo'] == 3) {
+                                echo "<h4>Hola Alumno(a)</h4>";
                             }
                             ?>
                           </div>
@@ -195,7 +191,15 @@ https://templatemo.com/tm-529-ramayana
           </div>
         </div>
 
-     <?php require_once('sidebar.php'); ?>
+     <?php 
+     if($_SESSION['Tipo']==1){
+        require_once('sidebar_admin.php');
+     }else if ($_SESSION['Tipo']==2){
+         require_once('sidebar_prof.php');
+     }else if ($_SESSION['Tipo']==3){
+         require_once('sidebar_alumn.php');
+     }
+      ?>
 
     </div>
 

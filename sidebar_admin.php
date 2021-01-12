@@ -27,7 +27,7 @@
                        <li><a href="shortcodes.php"><i class="far fa-credit-card"></i>Pagos</a></li>
                         <li><a href="shortcodes.php"><i class="fas fa-balance-scale"></i>Cobranza</a></li>
                 
-                <li><a href="https://www.google.com">External Link</a></li>
+               
               </ul>
             </nav>
 
