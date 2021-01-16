@@ -6,7 +6,7 @@ if (!isset($_SESSION['Email'])){
  ?>
 
 <?php
-                        require 'C:\xampp\htdocs\UDNApp\php\conf.php';//Ruta relativa para la conexión
+                        require 'php\conf.php';//Ruta relativa para la conexión
 ?>
 <!DOCTYPE html>
 <html lang="en">
