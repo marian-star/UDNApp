@@ -146,6 +146,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                           <tr>
                             <th>No.</th>
                             <th>Horario</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -161,13 +162,13 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                              
                              <td><?php echo $mostrar['idhorarios']?></td>
                              <td><?php echo $mostrar['turno'] ?></td>
+                             <td><?php echo "<input type='button'  value='Editar' class='edit' edit='".$mostrar['idhorarios']."'>" ?></td>
                          </tr>
                          <?php
                     }
                          ?>
                         </tbody>
                       </table>
-                      
                     </div>
                   </div>
                 </div>
@@ -199,9 +200,17 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
     <script src="assets/js/transition.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $('.edit').click(function (){
+                var id=$(this).attr('edit');
+                $.post('.....php',{id:id},function(resp){
+                    
+                });
+            });
+        });
+    </script>
 </body>
 
-
-  </body>
 
 </html>

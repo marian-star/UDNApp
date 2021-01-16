@@ -38,10 +38,10 @@ if (isset($_SESSION['Email'])){
             <img src="image/Login.jpg"/>
             <form method="POST" action="php/login.php">
                 <div class="form-input">
-                    <input type="text" name="UserName" placeholder="Enter the User Name"/>	
+                    <input type="text" name="UserName" placeholder="Introduce nombre de usuario"/>	
                 </div>
                 <div class="form-input">
-                    <input type="password" name="password" placeholder="password"/>
+                    <input type="password" name="password" placeholder="Contraseña"/>
                 </div>
                 <?php
                     
