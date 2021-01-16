@@ -5,6 +5,9 @@ if (!isset($_SESSION['Email'])){
 }
  ?>
 
+<?php
+                        require 'C:\xampp\htdocs\UDNApp\php\conf.php';//Ruta relativa para la conexión
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +34,7 @@ https://templatemo.com/tm-529-ramayana
     <link rel="stylesheet" href="assets/css/templatemo-style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <script src="https://kit.fontawesome.com/dde5a83a43.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   </head>
 
@@ -92,7 +96,7 @@ if(isset($_POST["turno"])){
  </script>
  ";
         } else {
-echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>;";
+echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
         }
 
 
@@ -143,15 +147,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>;";
                          ?>
                         </tbody>
                       </table>
-                      <ul class="table-pagination">
-                        <li><a href="#">Previous</a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">Next</a></li>
-                      </ul>
+                      
                     </div>
                   </div>
                 </div>
