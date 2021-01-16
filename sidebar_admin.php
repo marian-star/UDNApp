@@ -34,25 +34,25 @@
             <!-- Featured Posts -->
             <div class="featured-posts">
               <div class="heading">
-                <h2>Featured Posts</h2>
+                <h2>UDN esta contigo</h2>
               </div>
               <div class="owl-carousel owl-theme">
                 <a href="#">
                   <div class="featured-item">
-                    <img src="assets/images/featured_post_01.jpg" alt="featured one">
-                    <p>Aliquam egestas convallis eros sed gravida. Curabitur consequat sit.</p>
+                    <img src="assets/images/udn.jpg" alt="featured one">
+                    <p>No pierdas la oportunidad de seguir estudiando!!!</p>
                   </div>
                 </a>
                 <a href="#">
                   <div class="featured-item">
-                    <img src="assets/images/featured_post_01.jpg" alt="featured two">
-                    <p>Donec a scelerisque massa. Aliquam non iaculis quam. Duis arcu turpis.</p>
+                    <img src="assets/images/udn_carreras.jpg" alt="featured two">
+                    <p>EL ESFUERZO COSECHARÁ EL ÉXITO!!!!</p>
                   </div>
                 </a>
                 <a href="#">
                   <div class="featured-item">
-                    <img src="assets/images/featured_post_01.jpg" alt="featured three">
-                    <p>Suspendisse ac convallis urna, vitae luctus ante. Donec sit amet.</p>
+                    <img src="assets/images/udn_contaduria.jpg" alt="featured three">
+                    <p>No pierdas la oportunidad de seguir estudiando!!!</p>
                   </div>
                 </a>
               </div>

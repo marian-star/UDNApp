@@ -74,13 +74,13 @@ https://templatemo.com/tm-529-ramayana
                       <div class="row">
                         <div class="col-md-6">
                           <fieldset>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Numero Credencial..." required="">
+                            <input name="credencial" type="text" class="form-control" id="credencial" placeholder="Numero Credencial..." required="">
                           </fieldset>
                         </div>
        
                             <div class="col-md-12">
                           <select name="category" id="category">
-                            <option value="categories" selected>Seleccione el grupo</option>
+                              <option value="categories" id="grupo" selected>Seleccione el grupo...</option>
                                
     <?php 
     $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
@@ -93,7 +93,7 @@ https://templatemo.com/tm-529-ramayana
                         </div>
                           <div class="col-md-12">
                           <select name="category" id="category">
-                            <option value="categories" selected>Seleccione Materia</option>
+                            <option value="categories" id="materia" selected>Seleccione Materia...</option>
                             
  <?php 
     $query_planta = mysqli_query($connect,"SELECT nombre FROM materias");
@@ -107,7 +107,7 @@ https://templatemo.com/tm-529-ramayana
 
                         <div class="col-md-12">
                           <select name="category" id="category">
-                            <option value="categories" selected>Turno</option>
+                            <option value="categories" id="turno" selected>Turno...</option>
  <?php 
     $query_planta = mysqli_query($connect,"SELECT turno FROM horarios");
     $result_planta = mysqli_num_rows($query_planta);
@@ -124,23 +124,38 @@ https://templatemo.com/tm-529-ramayana
                       </div>
                     </form>
                     <?php
-                   //Insertar datos a la base de datos 
+                    
+                    if(isset($_POST["nombre"])){
+    $credencial = $_POST["credencial"] ;
+    $grupo = $_POST["grupo"] ;
+    $materia = $_POST["materia"] ;
+    $turno = $_POST["turno"] ;
+    
 
-//$name = $_POST["nombre"] ;
-/*$name= filter_input(INPUT_POST, "nombre");
-$duracion= filter_input(INPUT_POST, "duracion");
-//$duracion = $_POST["duracion"] ;
-
-
-  $instruccion_SQL = "INSERT INTO carreras (nombres, duracion)
-                             VALUES ('$name','$duracion')";
-  //mysqli_set_charset $resulta = mysqli_query($connect,$instruccion_SQL);
+ $instruccion_SQL = "INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
+                             VALUES ('$credencial','$credencial', '$materia', '$turno')";
+  /*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL);
   
-  if (!$resulta){
-     // echo 'Error al registrar datos';
+  if (!$resulta){ 
+ echo "
+<script>
+    $(function (){
+     
+       Swal.fire({
+       icon: 'error',
+       title: 'Oops...',
+  text: 'Error  al  registrar los  datos!'
+})
+    });
+ </script>
+ ";
         } else {
-            echo 'Registro exitoso';
-        } */
+echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
+        }
+
+
+}        
+     //header('Location': 'enviado.php');       
                  
       ?>              
 
@@ -158,8 +173,27 @@ $duracion= filter_input(INPUT_POST, "duracion");
                 <div class="row">
                   <div class="col-md-12">
                     <div class="section-heading">
-                      <h2>Reporte</h2>
+                      <h2>Reporte por grupo</h2>
                     </div>
+                    
+                        <section class="forms">
+                         <div class="container-fluid">
+                         <div class="col-md-12">
+                         <select name="category" id="category">
+                         <option value="categories" selected>Seleccione el grupo</option>
+                               
+    <?php 
+    $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
+    $result_planta = mysqli_num_rows($query_planta);
+            while ($planta = mysqli_fetch_array($query_planta)) {
+                echo '<option value="'.$planta[id].'">'.$planta[idgrupos].'</option>';  
+            }
+     ?>
+                          </select>
+                        </div>                   
+              </div>
+            </section>
+                      
                     <div class="default-table">
                       <table>
                         <thead>
