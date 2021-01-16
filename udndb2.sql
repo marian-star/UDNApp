@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-01-2021 a las 08:14:59
+-- Tiempo de generación: 16-01-2021 a las 08:26:13
 -- Versión del servidor: 8.0.19
 -- Versión de PHP: 7.4.8
 
@@ -44,8 +44,8 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`idalumnos`, `nombres`, `apepat`, `apemat`, `fnacimiento`, `domicilio`, `telefono`, `curp`, `carrera`) VALUES
-(1, 'Jorge Luis', 'Alvarez', 'Ruvalcaba', '1997-01-14', 'San Francisco 115', '3345564852', 'AADDH5S6DF56S', 1),
-(2, 'Mariana', 'Salinas', 'Llamas', '1990-11-05', 'Colon 456', '5646545640', 'SDF5SD54DSFSD0', 4);
+(45530, 'Jorge Luis', 'Alvarez', 'Ruvalcaba', '1997-01-14', 'San Francisco 115', '3345564852', 'AADDH5S6DF56S', 1),
+(45531, 'Mariana', 'Salinas', 'Llamas', '1990-11-05', 'Colon 456', '5646545640', 'SDF5SD54DSFSD0', 4);
 
 -- --------------------------------------------------------
 
@@ -171,7 +171,7 @@ CREATE TABLE `inscritos` (
 --
 
 INSERT INTO `inscritos` (`idalumnos`, `idturno`, `idgrupo`, `idmateria`) VALUES
-(1, 3, 1, 1);
+(45530, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -408,7 +408,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `idalumnos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idalumnos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45532;
 
 --
 -- AUTO_INCREMENT de la tabla `carreras`
