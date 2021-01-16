@@ -92,7 +92,7 @@ https://templatemo.com/tm-529-ramayana
                       <div class="row">
                         <div class="col-md-6">
                           <fieldset>
-                            <input name="credencial" type="text" class="form-control" id="credencial" placeholder="Numero Credencial..." required="">
+                              <input name="credencial" type="text" id="credencial" class="form-control" id="credencial" placeholder="Numero Credencial..." required="">
                           </fieldset>
                         </div>
        
@@ -151,8 +151,12 @@ https://templatemo.com/tm-529-ramayana
     
 
  $instruccion_SQL = "INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
-                             VALUES ('$credencial','$credencial', '$materia', '$turno')";
+                             VALUES ('$credencial','$grupo', '$materia', '$turno')";
   /*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL);
+  
+  console.output("INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
+                             VALUES ('"."$credencial"."','"."$grupo"."','"."$materia"."', '"."$turno"."')");
+  
   
   if (!$resulta){ 
  echo "
@@ -198,7 +202,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                          <div class="container-fluid">
                          <div class="col-md-12">
                          <select name="category" id="category">
-                         <option value="categories" selected>Seleccione el grupo</option>
+                             <option value="categories" id="selecciona_grupo" selected>Seleccione el grupo</option>
                                
     <?php 
     $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
@@ -285,6 +289,33 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
 </body>
 
 
-  </body>
+<script type="text/javascript">
+        $(function (){
+            $('#selecciona_grupo').click(function (){//Funcion del botón
+                //console.log("Mensaje a la consola ");
+                var json={
+                    'data':0
+                };
+                //$.getJSON('general.php',{'data':0},)
+                $.getJSON('general.php',json,function (resp){
+                    $.each(resp,function(i){//EACH => para cada 
+                        //console.log(resp[i].NOMBRE); <TR> => Table Row (Renglon de la tabla)
+                        $('#vendedores').append('<tr> \n\
+                                                    <th scope="row">'+i+'</th>\n\
+                                                    <td>'+resp[i].idcarreras+'</td>\n\
+                                                    <td>'+resp[i].nombres+'</td>\n\
+                                                    <td>'+resp[i].duracion+'</td>\n\
+                                                 <td><button class="btnedit" mauricio="'+resp[i].NUM_EMPL+'" ><i class="bi bi-pencil-square"></i>editar</button></td> \n\
+                                                </tr>');
+                    });
+                });
+            });
+            
+            
+            $('.btnedit').click(function (){
+                console.log("click");
+            });
+        });
+    </script>
 
 </html>
