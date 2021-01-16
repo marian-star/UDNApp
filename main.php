@@ -16,7 +16,7 @@ if (!isset($_SESSION['Email'])){
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-    <title>Ramayana - Free Bootstrap 4 CSS Template</title>
+    <title>UDNApp Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,15 +44,9 @@ https://templatemo.com/tm-529-ramayana
           <div class="inner">
 
             <!-- Header -->
-            <header id="header">
-              <div class="logo">
-                <a href="main.php">UDNApp</a>
-              </div>
-               <div class="logout"> 
-                <a href="php/logout.php">Cerrar sesión</a>
-               </div>
-            </header>
-
+      <?php
+       require_once('header.php');
+       ?>
             <!-- Banner -->
             <section class="main-banner">
               <div class="container-fluid">

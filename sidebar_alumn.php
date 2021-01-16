@@ -16,8 +16,8 @@
               <ul>
                 <li><a href="main.php"><i class="fas fa-graduation-cap"></i>Homepage</a></li>
                 
-                <li><a href="shortcodes.php"><i class="fas fa-check-square"></i>Asistencias</a></li>
-                 <li><a href="shortcodes.php"><i class="fas fa-pencil-alt"></i>Calificaciones</a></li>
+                <li><a href="asistencias.php"><i class="fas fa-check-square"></i>Asistencias</a></li>
+                <li><a href="calificaciones.php"><i class="fas fa-pencil-alt"></i>Calificaciones</a></li>
                   <li><a href="shortcodes.php"><i class="fas fa-book"></i>Materias</a></li>
   
                       <li><a href="shortcodes.php"><i class="fas fa-users"></i>Grupos</a></li>
@@ -57,8 +57,7 @@
 
             <!-- Footer -->
             <footer id="footer">
-              <p class="copyright">Copyright &copy; 2019 Company Name
-              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+              <p class="copyright">Copyright &copy; 2021
             </footer>
 
           </div>
