@@ -49,78 +49,57 @@ https://templatemo.com/tm-529-ramayana
        ?>
 
             <!-- Forms -->
-            <section class="forms">
+<section class="forms">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="section-heading">
-                      <h2>Forms</h2>
+                      <h2>Nuevo registro</h2>
                     </div>
                     <form id="contact" action="" method="post">
                       <div class="row">
                         <div class="col-md-6">
                           <fieldset>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                          </fieldset>
-                        </div>
-                        <div class="col-md-6">
-                          <fieldset>
-                            <input name="email" type="text" class="form-control" id="email" placeholder="Your email..." required="">
+                            <input name="turno" type="text" class="form-control" id="turno"  placeholder="Nuevo Horario..." required="required">
                           </fieldset>
                         </div>
                         <div class="col-md-12">
-                          <select name="category" id="category">
-                            <option value="categories" selected>Select Category</option>
-                            <option value="Featured">General</option>
-                            <option value="Newest">Specific</option>
-                            <option value="Low Price">Technical</option>
-                            <option value="High Price">Application</option>
-                          </select>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                          <div class="radio-item">
-                            <input name="demo-small" type="checkbox" id="demo-priority-small" value="small">
-                            <label for="demo-priority-small">Small</label>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                          <div class="radio-item">
-                            <input name="demo-medium" type="checkbox" id="demo-priority-medium" value="medium">
-                            <label for="demo-priority-medium">Medium</label>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                          <div class="radio-item">
-                            <input name="demo-large" type="checkbox" id="demo-priority-large" value="large" >
-                            <label for="demo-priority-large">Large</label>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                          <div class="circle-item">
-                            <input name="demo-priority" type="radio" id="demo-small" value="16-20" checked>
-                            <label for="demo-small">Age: 16 - 20</label>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                          <div class="circle-item">
-                            <input name="demo-priority" type="radio" id="demo-medium" value="21-30">
-                            <label for="demo-medium">Age: 21 - 30</label>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                          <div class="circle-item">
-                            <input name="demo-priority" type="radio" id="demo-old" value="30+">
-                            <label for="demo-old">Age: 30+</label>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-                        </div>
-                        <div class="col-md-12">
-                          <button type="submit" id="form-submit" class="button">Send Message</button>
+                          <button type="submit" id="form-submit" name="form-submit" class="button">Guardar</button>
                         </div>
                       </div>
                     </form>
+                    <?php
+                    
+if(isset($_POST["turno"])){
+    $name = $_POST["turno"] ;
+
+ $instruccion_SQL = "INSERT INTO horarios (turno)
+                             VALUES ('$name')";
+  /*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL);
+  
+  if (!$resulta){ 
+ echo "
+<script>
+    $(function (){
+     
+       Swal.fire({
+       icon: 'error',
+       title: 'Oops...',
+  text: 'Error  al  registrar los  datos!'
+})
+    });
+ </script>
+ ";
+        } else {
+echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>;";
+        }
+
+
+}        
+     //header('Location': 'enviado.php');               
+      ?>              
+
+
                   </div>
                 </div>
               </div>
@@ -155,8 +134,8 @@ https://templatemo.com/tm-529-ramayana
 
 			?>
                              
-                             <td><?php echo $mostrar['idhorario']?></td>
-                             <td><?php echo $mostrar['idmateria'] ?></td>
+                             <td><?php echo $mostrar['idhorarios']?></td>
+                             <td><?php echo $mostrar['turno'] ?></td>
                          </tr>
                          <?php
                     }

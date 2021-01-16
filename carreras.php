@@ -67,7 +67,7 @@ https://templatemo.com/tm-529-ramayana
                 <div class="row">
                   <div class="col-md-12">
                     <div class="section-heading">
-                      <h2>Nuevo registro Carreras</h2>
+                      <h2>Nuevo registro</h2>
                     </div>
                     <form id="contact" action="" method="post">
                       <div class="row">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-01-2021 a las 05:00:12
+-- Tiempo de generación: 16-01-2021 a las 06:13:11
 -- Versión del servidor: 8.0.19
 -- Versión de PHP: 7.4.8
 
@@ -55,7 +55,7 @@ INSERT INTO `alumnos` (`idalumnos`, `nombres`, `apepat`, `apemat`, `fnacimiento`
 
 CREATE TABLE `asistencia` (
   `idalumnos` int NOT NULL,
-  `fecha` timestamp NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `asistencia` int NOT NULL,
   `materia` int NOT NULL,
   `plantel` int NOT NULL
@@ -72,7 +72,7 @@ CREATE TABLE `calificaciones` (
   `idmaterias` int NOT NULL,
   `idprofesores` int NOT NULL,
   `calificacion` int NOT NULL,
-  `fecha` timestamp NOT NULL
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -96,7 +96,8 @@ INSERT INTO `carreras` (`idcarreras`, `nombres`, `duracion`) VALUES
 (2, 'CONTADURIA PUBLICA', '3'),
 (3, 'CIENCIAS EN LA COMUNICACION', '3'),
 (4, 'FISIOTERAPEUTA', '5'),
-(13, '', '');
+(13, '', ''),
+(14, 'TURISMO', '5');
 
 -- --------------------------------------------------------
 
@@ -226,7 +227,7 @@ CREATE TABLE `pagos` (
   `metodo_pago` int NOT NULL,
   `cantidad` int NOT NULL,
   `descripcion` varchar(50) NOT NULL,
-  `fecha` timestamp NOT NULL
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -292,7 +293,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `password`, `Tipo`, `idtipo`) VALUES
-(1, 'mariana@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 2, 45574);
+(1, 'mariana@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 45574);
 
 --
 -- Índices para tablas volcadas
@@ -409,7 +410,7 @@ ALTER TABLE `alumnos`
 -- AUTO_INCREMENT de la tabla `carreras`
 --
 ALTER TABLE `carreras`
-  MODIFY `idcarreras` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idcarreras` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `grupos`

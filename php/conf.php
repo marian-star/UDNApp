@@ -2,9 +2,9 @@
 
 $host="localhost";
 $user="root";
-$password="";
-$database="udndb";
-$port="3306";
+$password="Jorge01";
+$database="udndb2";
+$port="3307";
 
 $connect = mysqli_connect($host, $user, $password)or die (mysqli_error());
 mysqli_select_db($connect, $database);
