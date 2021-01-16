@@ -90,7 +90,7 @@ https://templatemo.com/tm-529-ramayana
                     
 if(isset($_POST["nombre"])){
     $name = $_POST["nombre"] ;
-$duracion = $_POST["duracion"] ;
+    $duracion = $_POST["duracion"] ;
 
  $instruccion_SQL = "INSERT INTO carreras (nombres, duracion)
                              VALUES ('$name','$duracion')";
@@ -110,7 +110,7 @@ $duracion = $_POST["duracion"] ;
  </script>
  ";
         } else {
-echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>;";
+echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
         }
 
 
