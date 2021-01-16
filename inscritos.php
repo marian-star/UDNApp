@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['Email'])){
+    header("location: index.php");
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    
 
-    <title>Ramayana - HTML5 Template</title>
+    <title>Inscritos</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
 
 <!--
 Ramayana CSS Template
@@ -25,6 +32,18 @@ https://templatemo.com/tm-529-ramayana
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+    
+ <script src="https://kit.fontawesome.com/dde5a83a43.js" crossorigin="anonymous"></script>
+
+ 
+  <!-- //Review newer versions -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="vendor/jquery/jquery.tabledit.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>   
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+   
 
   </head>
 
@@ -38,11 +57,9 @@ https://templatemo.com/tm-529-ramayana
           <div class="inner">
 
             <!-- Header -->
-            <header id="header">
-              <div class="logo">
-                <a href="index.html">Inscritos</a>
-              </div>
-            </header>
+             <?php
+       require_once('header.php');
+       ?>
           
 
             <!-- Forms -->
@@ -60,40 +77,47 @@ https://templatemo.com/tm-529-ramayana
                             <input name="name" type="text" class="form-control" id="name" placeholder="Numero Credencial..." required="">
                           </fieldset>
                         </div>
-                          <!-- 
-                          $consulta_mysql='select * carreras';
-$result=mysqli_query($connect,$sql);
-  
-echo "<select name='select1'>";
-while($fila=mysql_fetch_array($resultado_consulta_mysql)){
-    echo "<option value='".$fila['nombre']."'>".$fila['nombre']."</option>";
-}
-echo "</select>";
-                          -->
-                        <div class="col-md-12">
+       
+                            <div class="col-md-12">
                           <select name="category" id="category">
                             <option value="categories" selected>Seleccione el grupo</option>
-<?php
-// Realizamos la consulta para extraer los datos
-          $sql="SELECT * FROM carreras";
-          while ($valores = mysqli_fetch_array($sql)) {
-// En esta sección estamos llenando el select con datos extraidos de una base de datos.
-            echo '<option value="'.$valores[id].'">'.$valores[idgrupos].'</option>';
-          }
-        ?>
+                               
+    <?php 
+    $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
+    $result_planta = mysqli_num_rows($query_planta);
+            while ($planta = mysqli_fetch_array($query_planta)) {
+                echo '<option value="'.$planta[id].'">'.$planta[idgrupos].'</option>';  
+            }
+     ?>
                           </select>
                         </div>
                           <div class="col-md-12">
                           <select name="category" id="category">
-                            <option value="categories" selected>Materia</option>
-
+                            <option value="categories" selected>Seleccione Materia</option>
+                            
+ <?php 
+    $query_planta = mysqli_query($connect,"SELECT nombre FROM materias");
+    $result_planta = mysqli_num_rows($query_planta);
+            while ($planta = mysqli_fetch_array($query_planta)) {
+                echo '<option value="'.$planta[id].'">'.$planta[nombre].'</option>';  
+            }
+     ?>
                           </select>
-<div class="col-md-12">
+                            </div>                              
+
+                        <div class="col-md-12">
                           <select name="category" id="category">
                             <option value="categories" selected>Turno</option>
+ <?php 
+    $query_planta = mysqli_query($connect,"SELECT turno FROM horarios");
+    $result_planta = mysqli_num_rows($query_planta);
+            while ($planta = mysqli_fetch_array($query_planta)) {
+                echo '<option value="'.$planta[id].'">'.$planta[turno].'</option>';  
+            }
+     ?>
                           </select>
                         </div>
-                        </div>
+                        
                         <div class="col-md-12">
                           <button type="submit" id="form-submit" class="button">Guardar</button>
                         </div>
@@ -184,7 +208,15 @@ $duracion= filter_input(INPUT_POST, "duracion");
           </div>
         </div>
 
-      <?php require_once('sidebar.php'); ?>
+      <?php 
+     if($_SESSION['Tipo']==1){
+        require_once('sidebar_admin.php');
+     }else if ($_SESSION['Tipo']==2){
+         require_once('sidebar_prof.php');
+     }else if ($_SESSION['Tipo']==3){
+         require_once('sidebar_alumn.php');
+     }
+      ?>
 
     </div>
 

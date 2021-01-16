@@ -22,7 +22,7 @@
                   <li><a href="shortcodes.php"><i class="fas fa-book"></i>Materias</a></li>
                   <li><a href="horarios.php"><i class="far fa-clock"></i>Horarios</a></li>
                     <li><a href="carreras.php"><i class="fas fa-chevron-circle-down"></i>Carreras</a></li>
-                     <li><a href="shortcodes.php"><i class="fas fa-folder-open"></i>Inscripciones</a></li>
+                    <li><a href="inscritos.php"><i class="fas fa-folder-open"></i>Inscripciones</a></li>
                       <li><a href="shortcodes.php"><i class="fas fa-users"></i>Grupos</a></li>
                        <li><a href="shortcodes.php"><i class="far fa-credit-card"></i>Pagos</a></li>
                         <li><a href="shortcodes.php"><i class="fas fa-balance-scale"></i>Cobranza</a></li>

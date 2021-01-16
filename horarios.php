@@ -71,10 +71,11 @@ https://templatemo.com/tm-529-ramayana
                     <?php
                     
 if(isset($_POST["turno"])){
-    $name = $_POST["turno"] ;
+    $turnos = $_POST["turno"] ;
 
+    
  $instruccion_SQL = "INSERT INTO horarios (turno)
-                             VALUES ('$name')";
+                             VALUES ('$turnos')";
   /*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL);
   
   if (!$resulta){ 

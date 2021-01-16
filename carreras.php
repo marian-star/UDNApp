@@ -17,7 +17,7 @@ if (!isset($_SESSION['Email'])){
     <meta name="author" content="">
     
 
-    <title>UDNApp - Carreras</title>
+    <title>Carreras</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
