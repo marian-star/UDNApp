@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-01-2021 a las 06:13:11
+-- Tiempo de generación: 16-01-2021 a las 08:26:13
 -- Versión del servidor: 8.0.19
 -- Versión de PHP: 7.4.8
 
@@ -44,8 +44,8 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`idalumnos`, `nombres`, `apepat`, `apemat`, `fnacimiento`, `domicilio`, `telefono`, `curp`, `carrera`) VALUES
-(1, 'Jorge Luis', 'Alvarez', 'Ruvalcaba', '1997-01-14', 'San Francisco 115', '3345564852', 'AADDH5S6DF56S', 1),
-(2, 'Mariana', 'Salinas', 'Llamas', '1990-11-05', 'Colon 456', '5646545640', 'SDF5SD54DSFSD0', 4);
+(45530, 'Jorge Luis', 'Alvarez', 'Ruvalcaba', '1997-01-14', 'San Francisco 115', '3345564852', 'AADDH5S6DF56S', 1),
+(45531, 'Mariana', 'Salinas', 'Llamas', '1990-11-05', 'Colon 456', '5646545640', 'SDF5SD54DSFSD0', 4);
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,8 @@ INSERT INTO `carreras` (`idcarreras`, `nombres`, `duracion`) VALUES
 (3, 'CIENCIAS EN LA COMUNICACION', '3'),
 (4, 'FISIOTERAPEUTA', '5'),
 (13, '', ''),
-(14, 'TURISMO', '5');
+(14, 'TURISMO', '5'),
+(15, 'MATEMATICAS', '3');
 
 -- --------------------------------------------------------
 
@@ -129,7 +130,8 @@ CREATE TABLE `grupos` (
 --
 
 INSERT INTO `grupos` (`idgrupos`, `idcarrera`, `ciclo`) VALUES
-(1, 1, '2018-2021');
+(1, 1, '2018-2021'),
+(2, 1, '2018-2021');
 
 -- --------------------------------------------------------
 
@@ -169,7 +171,7 @@ CREATE TABLE `inscritos` (
 --
 
 INSERT INTO `inscritos` (`idalumnos`, `idturno`, `idgrupo`, `idmateria`) VALUES
-(1, 3, 1, 1);
+(45530, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -193,7 +195,9 @@ CREATE TABLE `materias` (
 --
 
 INSERT INTO `materias` (`idmaterias`, `nombre`, `idcarrera`, `clavemateria`, `duracion`, `prerequisito`, `cuatrimestre`, `idprofesores`) VALUES
-(1, 'Redes', 1, 'ISC802', '3 Semanas', 'ISC65S', 8, 1);
+(1, 'Redes', 1, 'ISC802', '3 Semanas', 'ISC65S', 8, 1),
+(2, 'Programación orientada a objetos', 1, 'ISC803', '3 Semanas', 'ISCSDF', 8, 1),
+(3, 'Electrónica analógica', 1, 'ISC804', '3 Semanas', 'IS485S', 8, 1);
 
 -- --------------------------------------------------------
 
@@ -404,19 +408,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `idalumnos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idalumnos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45532;
 
 --
 -- AUTO_INCREMENT de la tabla `carreras`
 --
 ALTER TABLE `carreras`
-  MODIFY `idcarreras` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idcarreras` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `idgrupos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idgrupos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -428,7 +432,7 @@ ALTER TABLE `horarios`
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `idmaterias` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idmaterias` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_pago`
