@@ -78,7 +78,24 @@ https://templatemo.com/tm-529-ramayana
              <?php
        require_once('header.php');
        ?>
-          
+         
+           <script type="text/javascript">
+function valideKey(evt){
+    
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    
+    if(code==8) { // backspace.
+      return true;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else{ // other keys.
+      return false;
+    }
+}
+</script>  
+            
+            
             <!-- Forms -->
             <section class="forms">
               <div class="container-fluid">
@@ -96,7 +113,7 @@ https://templatemo.com/tm-529-ramayana
                         </div>
                         <div class="col-md-6">
                           <fieldset>
-                            <input name="duracion" type="id_products" class="form-control" id="duracion" placeholder="Duracion..." pattern="-?[0-9]*(\.[0-9]+)?" id="id_products" required="required">
+                              <input name="duracion" type="id_products" class="form-control" id="duracion" placeholder="Duracion..."  id="id_products" required="required">
                           </fieldset>
                         </div>
                         <div class="col-md-12">
@@ -104,6 +121,14 @@ https://templatemo.com/tm-529-ramayana
                         </div>
                       </div>
                     </form>
+                      
+                      <script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery("#duracion").on('input', function (evt) {
+				jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
+			});
+		});
+		</script>
                     <?php
                     
 if(isset($_POST["nombre"])){
