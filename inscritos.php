@@ -97,40 +97,40 @@ https://templatemo.com/tm-529-ramayana
                         </div>
        
                             <div class="col-md-12">
-                          <select name="category" id="category">
-                              <option value="categories" id="grupo" selected>Seleccione el grupo...</option>
+                          <select name="grupo">
+                              <option value="" disabled selected>Seleccione el grupo...</option>
                                
     <?php 
     $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
     $result_planta = mysqli_num_rows($query_planta);
             while ($planta = mysqli_fetch_array($query_planta)) {
-                echo '<option value="'.$planta[id].'">'.$planta[idgrupos].'</option>';  
+                echo '<option value="'.$planta[idgrupos].'">'.$planta[idgrupos].'</option>';  
             }
      ?>
                           </select>
                         </div>
                           <div class="col-md-12">
-                          <select name="category" id="category">
+                          <select name="materia" id="category">
                             <option value="categories" id="materia" selected>Seleccione Materia...</option>
                             
  <?php 
     $query_planta = mysqli_query($connect,"SELECT nombre FROM materias");
     $result_planta = mysqli_num_rows($query_planta);
             while ($planta = mysqli_fetch_array($query_planta)) {
-                echo '<option value="'.$planta[id].'">'.$planta[nombre].'</option>';  
+                echo '<option value="'.$planta[nombre].'">'.$planta[nombre].'</option>';  
             }
      ?>
                           </select>
                             </div>                              
 
                         <div class="col-md-12">
-                          <select name="category" id="category">
+                          <select name="turno" id="category">
                             <option value="categories" id="turno" selected>Turno...</option>
  <?php 
     $query_planta = mysqli_query($connect,"SELECT turno FROM horarios");
     $result_planta = mysqli_num_rows($query_planta);
             while ($planta = mysqli_fetch_array($query_planta)) {
-                echo '<option value="'.$planta[id].'">'.$planta[turno].'</option>';  
+                echo '<option value="'.$planta[turno].'">'.$planta[turno].'</option>';  
             }
      ?>
                           </select>
@@ -143,21 +143,41 @@ https://templatemo.com/tm-529-ramayana
                     </form>
                     <?php
                     
-                    if(isset($_POST["nombre"])){
+if(isset($_POST["credencial"])){
     $credencial = $_POST["credencial"] ;
-    $grupo = $_POST["grupo"] ;
-    $materia = $_POST["materia"] ;
-    $turno = $_POST["turno"] ;
+    if(!empty($_POST['grupo'])) {
+        $grupo = $_POST['grupo'];
+        echo 'You have chosen: ' . $grupo;
+    } else {
+        echo 'Please select the value.';
+        $grupo="empty";
+    }
     
+     if(!empty($_POST['materia'])) {
+        $materia = $_POST['materia'];
+        echo 'You have chosen: ' . $materia;
+    } else {
+        echo 'Please select the value.';
+        $materia="empty";
+    }
+    
+       if(!empty($_POST['turno'])) {
+        $turno = $_POST['turno'];
+        echo 'You have chosen: ' . $turno;
+    } else {
+        echo 'Please select the value.';
+        $turno="empty";
+    }
+    
+    echo "<script type='text/javascript'>alert('$credencial');</script>";
+    echo "<script type='text/javascript'>alert('$grupo');</script>";
+    echo "<script type='text/javascript'>alert('$materia');</script>";
+    echo "<script type='text/javascript'>alert('$turno');</script>";
 
- $instruccion_SQL = "INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
-                             VALUES ('$credencial','$grupo', '$materia', '$turno')";
-  /*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL);
-  
-  console.output("INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
-                             VALUES ('"."$credencial"."','"."$grupo"."','"."$materia"."', '"."$turno"."')");
-  
-  
+ //$instruccion_SQL = "INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
+  //                           VALUES ('$credencial','$turno','$grupo', '$materia')";
+  ///*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL); 
+ 
   if (!$resulta){ 
  echo "
 <script>
