@@ -204,6 +204,8 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
        $(function(){
            $('.edit').click(function (){
                
+               if($(this).attr('value')=="Editar"){
+        
                $(this).prop("value", "Guardar");
                
                var idTD=$(this).attr('edit');
@@ -218,8 +220,11 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                    
               // });
                console.log("#"+idTD);
-           });
-       })
+           }else if($(this).attr('value')=="Guardar"){
+               
+           }
+           });//Fin de funcion Click
+       })//Fin Funcion anonima
     </script>
 </body>
 
