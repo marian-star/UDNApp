@@ -1,7 +1,7 @@
 <?php
-require 'conf.php';//Ruta relativa para la conexión
+require 'php\conf.php';//Ruta relativa para la conexión
 
-$query="SELECT * FROM carreras";//Hacemos consulta
+$query="SELECT * FROM inscritos";//Hacemos consulta
 
 $result= mysqli_query($connect, $query) or die (mysqli_error($connect));//Guardamos resultado de la consulta
 
@@ -13,11 +13,11 @@ $i=0;
 if(mysqli_num_rows($result)){
     while ($row = mysqli_fetch_array($result)) {
         $vendedores[$i]=array(
-            'idcarreras'  =>  $row['idcarreras'],
-            'nombres'     =>  $row['nombres'],
-            'duracion'    =>  $row['duracion'],
-           /* 'EDAD'      =>  $row['EDAD'],
-            'TITULO'    =>  $row['TITULO'],
+            'idalumnos'  =>  $row['idalumnos'],
+            'idturno'    =>  $row['idturno'],
+            'idgrupo'    =>  $row['idgrupo'],
+            'idmateria'  =>  $row['idmateria'],
+          /*  'TITULO'    =>  $row['TITULO'],
             'CONTRATO'  =>  $row['CONTRATO'],
             'CUOTA'     =>  $row['CUOTA'],
             'VENTAS'    =>  $row['VENTAS']*/

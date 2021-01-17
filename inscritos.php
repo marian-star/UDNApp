@@ -86,7 +86,7 @@ https://templatemo.com/tm-529-ramayana
                 
                   
                     <div class="section-heading">
-                      <h2>Nuevo registro </h2>
+                      <h2>Nuevo Registro Inscritos</h2>
                     </div>
                     <form id="contact" action="" method="post">
                       <div class="row">
@@ -214,7 +214,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                          <div class="container-fluid">
                          <div class="col-md-12">
                          <select name="category" id="category">
-                             <option value="categories" id="selecciona_grupo" selected>Seleccione el grupo</option>
+                             <option value="categories"  selected>Seleccione el grupo</option>
                                
     <?php 
     $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
@@ -227,36 +227,26 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                         </div>                   
               </div>
             </section>
-                      
+                      <div class="col-md-12">
+                          <button type="submit" id="selecciona_grupo" class="button">Cargar Lista</button>
+                        </div>
                     <div class="default-table">
                       <table>
                         <thead>
                           <tr>
-                            <th>No.</th>
-                            <th>Nombre</th>
-                            <th>Duracion</th>
+                      <th scope="col">#</th>
+                      <th scope="col">credencial</th>
+                      <th scope="col">turno</th>
+                      <th scope="col">grupo</th>
+                      <th scope="col">materia</th>
+                      <th scope="col">Acción</th> 
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                              <?php
-                              
-			$sql="SELECT * FROM carreras"; // Se hace la consulta
-			$result=mysqli_query($connect,$sql); // Se guarda el resultado en un result para mostrar
+                        
+                <tbody id="mostrar">
 
-			while ($mostrar=mysqli_fetch_array($result)){
-
-			?>
-                             
-                             <td><?php echo $mostrar['idcarreras']?></td>
-                             <td><?php echo $mostrar['nombres'] ?></td>
-                             <td><?php echo $mostrar['duracion'] ?></td>
-                         </tr>
-                         <?php
-                    }
-                    mysqli_close($connect)
-                         ?>
                         </tbody>
+                        
                       </table>
                       <ul class="table-pagination">
                         <li><a href="#">Previous</a></li>
@@ -308,15 +298,15 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                 var json={
                     'data':0
                 };
-                //$.getJSON('general.php',{'data':0},)
                 $.getJSON('general.php',json,function (resp){
-                    $.each(resp,function(i){//EACH => para cada 
-                        //console.log(resp[i].NOMBRE); <TR> => Table Row (Renglon de la tabla)
-                        $('#vendedores').append('<tr> \n\
+                    $.each(resp,function(i){
+
+                        $('#mostrar').append('<tr> \n\
                                                     <th scope="row">'+i+'</th>\n\
-                                                    <td>'+resp[i].idcarreras+'</td>\n\
-                                                    <td>'+resp[i].nombres+'</td>\n\
-                                                    <td>'+resp[i].duracion+'</td>\n\
+                                                    <td>'+resp[i].idalumnos+'</td>\n\
+                                                    <td>'+resp[i].idturno+'</td>\n\
+                                                    <td>'+resp[i].idgrupo+'</td>\n\
+                                                    <td>'+resp[i].idmateria+'</td>\n\
                                                  <td><button class="btnedit" mauricio="'+resp[i].NUM_EMPL+'" ><i class="bi bi-pencil-square"></i>editar</button></td> \n\
                                                 </tr>');
                     });
