@@ -306,10 +306,9 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                 var json={
                     'data':0
                 };
-                //$.getJSON('general.php',{'data':0},)
                 $.getJSON('general.php',json,function (resp){
-                    $.each(resp,function(i){//EACH => para cada 
-                        //console.log(resp[i].NOMBRE); <TR> => Table Row (Renglon de la tabla)
+                    $.each(resp,function(i){
+
                         $('#mostrar').append('<tr> \n\
                                                     <th scope="row">'+i+'</th>\n\
                                                     <td>'+resp[i].idalumnos+'</td>\n\
