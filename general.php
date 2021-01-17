@@ -1,7 +1,11 @@
 <?php
 require 'php\conf.php';//Ruta relativa para la conexión
 
-$query="SELECT * FROM inscritos";//Hacemos consulta
+$query="SELECT inscritos.idalumnos,
+		horarios.turno,inscritos.idgrupo,materias.nombre
+FROM inscritos INNER JOIN horarios
+on inscritos.idturno=horarios.idhorarios
+INNER JOIN materias ON inscritos.idmateria=materias.idmaterias";//Hacemos consulta
 
 $result= mysqli_query($connect, $query) or die (mysqli_error($connect));//Guardamos resultado de la consulta
 
@@ -17,10 +21,6 @@ if(mysqli_num_rows($result)){
             'idturno'    =>  $row['idturno'],
             'idgrupo'    =>  $row['idgrupo'],
             'idmateria'  =>  $row['idmateria'],
-          /*  'TITULO'    =>  $row['TITULO'],
-            'CONTRATO'  =>  $row['CONTRATO'],
-            'CUOTA'     =>  $row['CUOTA'],
-            'VENTAS'    =>  $row['VENTAS']*/
         );
         $i++;
     }

@@ -212,23 +212,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                       <h2>Reporte por grupo</h2>
                     </div>
                     
-   <!--                  <section class="forms">
-                         <div class="container-fluid">
-                         <div class="col-md-12">
-                         <select name="category" id="category">
-                             <option value="categories"  selected>Seleccione el grupo</option> -->
-                               
-    <?php 
-    $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
-    $result_planta = mysqli_num_rows($query_planta);
-            while ($planta = mysqli_fetch_array($query_planta)) {
-                echo '<option value="'.$planta[id].'">'.$planta[idgrupos].'</option>';  
-            }
-     ?>
-                          </select>
-                        </div>                   
-              </div>
-            </section>
+
                       <div class="col-md-12">
                           <button type="submit" id="selecciona_grupo" class="button">Cargar Lista</button>
                         </div>
