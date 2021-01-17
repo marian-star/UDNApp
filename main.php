@@ -153,7 +153,7 @@ https://templatemo.com/tm-529-ramayana
             </section>
 
             <!-- Top Image -->
-            <section class="top-image">
+        <!--    <section class="top-image">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
@@ -168,10 +168,10 @@ https://templatemo.com/tm-529-ramayana
                   </div>
                 </div>
               </div>
-            </section>
+            </section> -->
 
             <!-- Left Image -->
-            <section class="left-image">
+           <!-- <section class="left-image">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-6">
@@ -188,10 +188,10 @@ https://templatemo.com/tm-529-ramayana
                   </div>
                 </div>
               </div>
-            </section>
+            </section>-->
 
             <!-- Right Image -->
-            <section class="right-image">
+        <!--     <section class="right-image">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-6">
@@ -208,7 +208,7 @@ https://templatemo.com/tm-529-ramayana
                   </div>
                 </div>
               </div>
-            </section>
+            </section> -->
 
           </div>
         </div>
