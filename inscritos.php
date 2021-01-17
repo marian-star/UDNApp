@@ -212,11 +212,11 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                       <h2>Reporte por grupo</h2>
                     </div>
                     
-                        <section class="forms">
+   <!--                  <section class="forms">
                          <div class="container-fluid">
                          <div class="col-md-12">
                          <select name="category" id="category">
-                             <option value="categories"  selected>Seleccione el grupo</option>
+                             <option value="categories"  selected>Seleccione el grupo</option> -->
                                
     <?php 
     $query_planta = mysqli_query($connect,"SELECT idgrupos FROM grupos");
