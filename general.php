@@ -1,11 +1,7 @@
 <?php
 require 'php\conf.php';//Ruta relativa para la conexión
 
-$query="SELECT inscritos.idalumnos,
-		horarios.turno,inscritos.idgrupo,materias.nombre
-FROM inscritos INNER JOIN horarios
-on inscritos.idturno=horarios.idhorarios
-INNER JOIN materias ON inscritos.idmateria=materias.idmaterias";//Hacemos consulta
+$query="SELECT * FROM inscritos";//Hacemos consulta
 
 $result= mysqli_query($connect, $query) or die (mysqli_error($connect));//Guardamos resultado de la consulta
 
