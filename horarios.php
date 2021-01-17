@@ -161,7 +161,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
 			?>
                              
                              <td><?php echo $mostrar['idhorarios']?></td>
-                             <td><?php echo $mostrar['turno'] ?></td>
+                             <td id="td<?php echo $mostrar['idhorarios']?>"><?php echo $mostrar['turno'] ?></td>
                              <td><?php echo "<input type='button'  value='Editar' class='edit' edit='".$mostrar['idhorarios']."'>" ?></td>
                          </tr>
                          <?php
@@ -187,7 +187,7 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
          require_once('sidebar_alumn.php');
      }
       ?>
-
+      
     </div>
 
   <!-- Scripts -->
@@ -201,14 +201,25 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
     <script type="text/javascript">
-        $(function (){
-            $('.edit').click(function (){
-                var id=$(this).attr('edit');
-              //  $.post('.....php',{id:id},function(resp){
-                    
-             $(this).prop("value", "Guardar");
-            });
-        });
+       $(function(){
+           $('.edit').click(function (){
+               
+               $(this).prop("value", "Guardar");
+               
+               var idTD=$(this).attr('edit');
+               var contenido=$('#td'+idTD).text();
+               $('#td'+idTD).empty();
+               $('#td'+idTD).append('<input type="text" name="inputEdit" id="inputEdit" value="'+contenido+'">');
+               var json={
+                   id:idTD,
+                   valornuevo:$('#inputEdit').val()
+               };
+              // $.post('modificaHorarios.php',json,function(resp){
+                   
+              // });
+               console.log("#"+idTD);
+           });
+       })
     </script>
 </body>
 
