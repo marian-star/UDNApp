@@ -178,8 +178,9 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
 			?>
                              
                              <td><?php echo $mostrar['idcarreras']?></td>
-                             <td><?php echo $mostrar['nombres'] ?></td>
-                             <td><?php echo $mostrar['duracion'] ?></td>
+                             <td id="td_nom<?php echo $mostrar['idcarreras']?>"><?php echo $mostrar['nombres'] ?></td>
+                             <td id="td_dur<?php echo $mostrar['idcarreras']?>"><?php echo $mostrar['duracion'] ?></td>
+                             <td><?php echo "<input type='button'  value='Editar' class='edit' edit='".$mostrar['idcarreras']."'>" ?></td>
                          </tr>
                          <?php
                     }
@@ -220,28 +221,47 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
     <script src="assets/js/custom.js"></script>
 </body>
 
-
+<script type="text/javascript">
+       $(function(){
+           $('.edit').click(function (){
+               
+               if($(this).attr('value')=="Editar"){
+        
+               $(this).prop("value", "Guardar");
+               
+               var idTD=$(this).attr('edit');
+               var contenidoNombre=$('#td_nom'+idTD).text();
+               $('#td_nom'+idTD).empty();
+               $('#td_nom'+idTD).append('<input type="text" name="inputEdit" id="inputEditNombre" value="'+contenidoNombre+'">');
+               
+                var contenidoDuracion=$('#td_dur'+idTD).text();
+               $('#td_dur'+idTD).empty();
+               $('#td_dur'+idTD).append('<input type="text" name="inputEdit" id="inputEditDuracion" value="'+contenidoDuracion+'">');
+               
+               console.log("#"+idTD);
+           }else if($(this).attr('value')=="Guardar"){
+               
+               var idTD=$(this).attr('edit');
+               var jsonHorarios={
+                   id:idTD,
+                   valornuevoNombre:$('#inputEditNombre').val(),
+                   valornuevoDuracion:$('#inputEditDuracion').val()
+               };
+             $.post('php/modificaCarreras.php',jsonHorarios,function(resp){
+                 //Falta registrar si fue exitoso  
+               });
+               $(this).prop("value", "Editar");
+               var contenidoNombre=$('#inputEditNombre').val();
+               $('#td_nom'+idTD).empty();
+               $('#td_nom'+idTD).append(contenidoNombre);
+               
+               var contenidoDuracion=$('#inputEditDuracion').val();
+               $('#td_dur'+idTD).empty();
+               $('#td_dur'+idTD).append(contenidoDuracion);
+           }
+           });//Fin de funcion Click
+       })//Fin Funcion anonima
+    </script>
   </body>
 
 </html>
-
-<script>  
-$(document).ready(function(){  
-     $('#editable_table').Tabledit({
-      url:'action.php',
-      columns:{
-       identifier:[0, "idcarreras"],
-       editable:[[1, 'nombres'], [2, 'duracion']]
-      },
-      restoreButton:false,
-      onSuccess:function(data, textStatus, jqXHR)
-      {
-       if(data.action == 'delete')
-       {
-        $('#'+data.idcarreras).remove();
-       }
-      }
-     });
- 
-});  
- </script>
