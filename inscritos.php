@@ -1,4 +1,5 @@
 <?php
+require 'php\validador.php';
 session_start();
 if (!isset($_SESSION['Email'])){
     header("location: index.php");
@@ -92,17 +93,10 @@ https://templatemo.com/tm-529-ramayana
                       <div class="row">
                         <div class="col-md-6">
                           <fieldset>
-                              <input name="credencial" type="text" id="credencial" class="form-control" id="credencial" placeholder="Numero Credencial..." required="">
+                              <input name="credencial" type="text" id="credencial" class="form-control" onkeypress="return valideKey(event);" id="credencial" placeholder="Numero Credencial..." required="">
                           </fieldset>
                         </div>
-                          
-                        <script type="text/javascript">
-		jQuery(document).ready(function(){
-			jQuery("#credencial").on('input', function (evt) {
-				jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
-			});
-		});
-		</script>             
+                               
                           
                             <div class="col-md-12">
                           <select name="grupo">

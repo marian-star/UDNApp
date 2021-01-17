@@ -1,4 +1,5 @@
 <?php
+require 'php\validador.php';
 session_start();
 if (!isset($_SESSION['Email'])){
     header("location: index.php");
@@ -71,7 +72,6 @@ https://templatemo.com/tm-529-ramayana
            <?php
        require_once('header.php');
        ?>
-
             <!-- Forms -->
 <section class="forms">
               <div class="container-fluid">
@@ -84,7 +84,7 @@ https://templatemo.com/tm-529-ramayana
                       <div class="row">
                         <div class="col-md-6">
                           <fieldset>
-                            <input name="turno" type="text" class="form-control" id="turno"  placeholder="Nuevo Horario..." required="required">
+                            <input name="turno" type="text" class="form-control" id="turno" onkeypress="return soloLetras(event)"  placeholder="Nuevo Horario..." required="required">
                           </fieldset>
                         </div>
                         <div class="col-md-12">
