@@ -212,16 +212,23 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                var contenido=$('#td'+idTD).text();
                $('#td'+idTD).empty();
                $('#td'+idTD).append('<input type="text" name="inputEdit" id="inputEdit" value="'+contenido+'">');
-               var json={
-                   id:idTD,
-                   valornuevo:$('#inputEdit').val()
-               };
-              // $.post('modificaHorarios.php',json,function(resp){
-                   
-              // });
+               
                console.log("#"+idTD);
            }else if($(this).attr('value')=="Guardar"){
                
+               var idTD=$(this).attr('edit');
+               var jsonHorarios={
+                   id:idTD,
+                   valornuevo:$('#inputEdit').val()
+               };
+               console.log($('#inputEdit').val());
+             $.post('php/modificaHorarios.php',jsonHorarios,function(resp){
+                 //Falta registrar si fue exitoso  
+               });
+               $(this).prop("value", "Editar");
+               var contenido=$('#inputEdit').val();
+               $('#td'+idTD).empty();
+               $('#td'+idTD).append(contenido);
            }
            });//Fin de funcion Click
        })//Fin Funcion anonima
