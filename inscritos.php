@@ -111,13 +111,13 @@ https://templatemo.com/tm-529-ramayana
                         </div>
                           <div class="col-md-12">
                           <select name="materia" id="category">
-                            <option value="categories" id="materia" selected>Seleccione Materia...</option>
+                            <option value="" disabled selected>Seleccione Materia...</option>
                             
  <?php 
-    $query_planta = mysqli_query($connect,"SELECT nombre FROM materias");
+    $query_planta = mysqli_query($connect,"SELECT idmaterias,nombre FROM materias");
     $result_planta = mysqli_num_rows($query_planta);
             while ($planta = mysqli_fetch_array($query_planta)) {
-                echo '<option value="'.$planta[nombre].'">'.$planta[nombre].'</option>';  
+                echo '<option value="'.$planta[idmaterias].'_'.$planta[nombre].'">'.$planta[nombre].'</option>';  
             }
      ?>
                           </select>
@@ -125,12 +125,12 @@ https://templatemo.com/tm-529-ramayana
 
                         <div class="col-md-12">
                           <select name="turno" id="category">
-                            <option value="categories" id="turno" selected>Turno...</option>
+                            <option value="" disabled selected>Turno...</option>
  <?php 
-    $query_planta = mysqli_query($connect,"SELECT turno FROM horarios");
+    $query_planta = mysqli_query($connect,"SELECT idhorarios,turno FROM horarios");
     $result_planta = mysqli_num_rows($query_planta);
             while ($planta = mysqli_fetch_array($query_planta)) {
-                echo '<option value="'.$planta[turno].'">'.$planta[turno].'</option>';  
+                echo '<option value="'.$planta[idhorarios].'_'.$planta[turno].'">'.$planta[turno].'</option>';  
             }
      ?>
                           </select>
@@ -147,36 +147,28 @@ if(isset($_POST["credencial"])){
     $credencial = $_POST["credencial"] ;
     if(!empty($_POST['grupo'])) {
         $grupo = $_POST['grupo'];
-        echo 'You have chosen: ' . $grupo;
     } else {
-        echo 'Please select the value.';
-        $grupo="empty";
+        //echo 'Please select the value.';
     }
     
      if(!empty($_POST['materia'])) {
-        $materia = $_POST['materia'];
-        echo 'You have chosen: ' . $materia;
+         $materia = explode("_",$_POST['materia']);
+         $materia_id = $materia[0];
+         $materia_name = $materia[1];
     } else {
-        echo 'Please select the value.';
-        $materia="empty";
+       // echo 'Please select the value.';
     }
-    
        if(!empty($_POST['turno'])) {
-        $turno = $_POST['turno'];
-        echo 'You have chosen: ' . $turno;
+         $turno = explode("_",$_POST['turno']);
+         $turno_id = $turno[0];
+         $turno_name = $turno[1];
     } else {
-        echo 'Please select the value.';
-        $turno="empty";
+        //echo 'Please select the value.';
     }
-    
-    echo "<script type='text/javascript'>alert('$credencial');</script>";
-    echo "<script type='text/javascript'>alert('$grupo');</script>";
-    echo "<script type='text/javascript'>alert('$materia');</script>";
-    echo "<script type='text/javascript'>alert('$turno');</script>";
 
- //$instruccion_SQL = "INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
-  //                           VALUES ('$credencial','$turno','$grupo', '$materia')";
-  ///*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL); 
+ $instruccion_SQL = "INSERT INTO inscritos (idalumnos, idturno, idgrupo, idmateria)
+                             VALUES ('$credencial','$turno_id','$grupo', '$materia_id' )";
+  /*mysqli_set_charset*/ $resulta = mysqli_query($connect,$instruccion_SQL); 
  
   if (!$resulta){ 
  echo "
@@ -256,15 +248,6 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
                         </tbody>
                         
                       </table>
-                      <ul class="table-pagination">
-                        <li><a href="#">Previous</a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">Next</a></li>
-                      </ul>
                     </div>
                   </div>
                 </div>
