@@ -204,9 +204,9 @@ echo "<script> $(function (){Swal.fire('Registro exitoso') });</script>";
         $(function (){
             $('.edit').click(function (){
                 var id=$(this).attr('edit');
-                $.post('.....php',{id:id},function(resp){
+              //  $.post('.....php',{id:id},function(resp){
                     
-                });
+             $(this).prop("value", "Guardar");
             });
         });
     </script>
